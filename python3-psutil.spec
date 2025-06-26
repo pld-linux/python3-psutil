@@ -21,8 +21,12 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with tests}
-BuildRequires:	python3-ipaddress
-BuildRequires:	python3-mock
+BuildRequires:	python3-pyperf
+BuildRequires:	python3-pytest
+%endif
+%if %{with doc}
+BuildRequires:	python3-sphinx_rtd_theme
+BuildRequires:	sphinx-pdg-3
 %endif
 BuildRequires:	python3-devel >= 1:3.6
 BuildRequires:	python3-modules >= 1:3.6
@@ -65,7 +69,7 @@ ln -sf ../../scripts .
 ln -sf ../../setup.py .
 PYTHONPATH=$(pwd) \
 %{__python3} -m psutil.tests
-%{__rm} scripts setup.py
+%{__rm} scripts setup.py __pycache__/setup.*
 cd ../..
 %endif
 
@@ -86,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CREDITS HISTORY.rst LICENSE README.rst
+%doc CREDITS HISTORY.rst LICENSE README.rst SECURITY.md
 %dir %{py3_sitedir}/psutil
 %attr(755,root,root) %{py3_sitedir}/psutil/_psutil_linux.*.so
 %attr(755,root,root) %{py3_sitedir}/psutil/_psutil_posix.*.so
