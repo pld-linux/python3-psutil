@@ -9,13 +9,13 @@
 Summary:	A cross-platform process and system utilities module for Python
 Summary(pl.UTF-8):	Wieloplatformowe narzędzia do procesów i systemu dla Pythona
 Name:		python3-%{module}
-Version:	7.0.0
-Release:	3
+Version:	7.2.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/psutil/
 Source0:	https://github.com/giampaolo/psutil/archive/release-%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	5ad9868e9f36604f8164ba7bf53550f2
+# Source0-md5:	6147c42cc9ca1cfc20354935f22f6b07
 URL:		https://github.com/giampaolo/psutil
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
@@ -83,8 +83,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %py3_install
 
-%{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/psutil/tests
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -93,7 +91,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc CREDITS HISTORY.rst LICENSE README.rst SECURITY.md
 %dir %{py3_sitedir}/psutil
 %attr(755,root,root) %{py3_sitedir}/psutil/_psutil_linux.*.so
-%attr(755,root,root) %{py3_sitedir}/psutil/_psutil_posix.*.so
 %{py3_sitedir}/psutil/*.py
 %{py3_sitedir}/psutil/__pycache__
 %{py3_sitedir}/psutil-%{version}-py*.egg-info
