@@ -17,6 +17,9 @@ Group:		Development/Languages/Python
 Source0:	https://github.com/giampaolo/psutil/archive/release-%{version}/%{module}-%{version}.tar.gz
 # Source0-md5:	6147c42cc9ca1cfc20354935f22f6b07
 URL:		https://github.com/giampaolo/psutil
+BuildRequires:	python3-devel >= 1:3.6
+BuildRequires:	python3-modules >= 1:3.6
+BuildRequires:	python3-setuptools >= 1:43
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -28,8 +31,6 @@ BuildRequires:	python3-pytest
 BuildRequires:	python3-sphinx_rtd_theme
 BuildRequires:	sphinx-pdg-3
 %endif
-BuildRequires:	python3-devel >= 1:3.6
-BuildRequires:	python3-modules >= 1:3.6
 Requires:	python3-modules >= 1:3.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
